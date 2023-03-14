@@ -1,15 +1,19 @@
 package br.com.study.gerenciador.repository;
 
+import static br.com.study.gerenciador.model.Usuario.builder;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
 import br.com.study.gerenciador.model.Empresa;
+import br.com.study.gerenciador.model.Usuario;
 
 public class Banco {
-	private static List<Empresa> empresas = new ArrayList<>();
 	private static Integer chaveSequencial = 1;
+	private static List<Empresa> empresas = new ArrayList<>();
+	private static List<Usuario> usuarios = new ArrayList<>();
 
 	static {
 		Empresa google = new Empresa();
@@ -27,6 +31,14 @@ public class Banco {
 		empresas.add(google);
 		empresas.add(amazon);
 		empresas.add(facebook);
+
+		Usuario ricardo = builder().login("Ricardo").senha("123456").build();
+		Usuario nico = builder().login("Nico").senha("654321").build();
+		Usuario tayne = builder().login("Tayne").senha("246810").build();
+
+		usuarios.add(ricardo);
+		usuarios.add(nico);
+		usuarios.add(tayne);
 	}
 
 	private Banco() {
@@ -55,6 +67,15 @@ public class Banco {
 		for (Empresa empresa : empresas) {
 			if (Objects.equals(empresa.getId(), id)) {
 				return empresa;
+			}
+		}
+		return null;
+	}
+
+	public static Usuario existeUsuario(String login, String senha) {
+		for (Usuario usuario : usuarios) {
+			if (Boolean.TRUE.equals(usuario.ehIgual(login, senha))) {
+				return usuario;
 			}
 		}
 		return null;

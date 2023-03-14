@@ -17,7 +17,6 @@ public class Entrada extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String destino = null;
 		String acao = request.getParameter("acao");
 		String nomeQualificado = "br.com.study.gerenciador.controller." + acao;

@@ -12,6 +12,7 @@
     <title>Document</title>
 </head>
 <body>
+	<c:import url="fragmento-logout.jsp"/>
     <form action="${ linkentrada }" method="post">
     	<input type="hidden" name="acao" value="NovaEmpresa">
         Nome: <input type="text" name="nome" id="">
