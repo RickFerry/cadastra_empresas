@@ -17,6 +17,12 @@ public class Controlador extends HttpFilter implements Filter {
 	private static final long serialVersionUID = -4012572914709744135L;
 
 	@Override
+	public void init() throws ServletException {}
+	
+	@Override
+	public void destroy() {}
+	
+	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) servletRequest;

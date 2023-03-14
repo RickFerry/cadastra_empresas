@@ -16,6 +16,12 @@ public class Monitoramento extends HttpFilter implements Filter {
 	private static final long serialVersionUID = 2408642405840319291L;
 
 	@Override
+	public void init() throws ServletException {}
+	
+	@Override
+	public void destroy() {}
+	
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		long antes = System.currentTimeMillis();

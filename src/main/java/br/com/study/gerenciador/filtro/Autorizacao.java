@@ -15,6 +15,12 @@ public class Autorizacao extends HttpFilter implements Filter {
 	private static final long serialVersionUID = -5824814583043110607L;
 
 	@Override
+	public void init() throws ServletException {}
+	
+	@Override
+	public void destroy() {}
+	
+	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
 			throws IOException, ServletException {
 
