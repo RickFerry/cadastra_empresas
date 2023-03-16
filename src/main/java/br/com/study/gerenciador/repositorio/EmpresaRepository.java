@@ -20,7 +20,7 @@ public class EmpresaRepository {
 		this.conn = new ConnectionFactory();
 		try {
 			this.conexao = conn.getConnection();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -34,8 +34,6 @@ public class EmpresaRepository {
 			stm.execute();
 		} catch (Exception e) {
 			throw new SQLException(e);
-		} finally {
-			conexao.close();
 		}
 	}
 
@@ -55,8 +53,6 @@ public class EmpresaRepository {
 			return empresas;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			conexao.close();
 		}
 		return Collections.emptyList();
 	}
@@ -76,8 +72,6 @@ public class EmpresaRepository {
 			return empresa;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			conexao.close();
 		}
 		return null;
 	}
@@ -91,8 +85,6 @@ public class EmpresaRepository {
 			stm.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			conexao.close();
 		}
 	}
 
@@ -102,8 +94,6 @@ public class EmpresaRepository {
 			stm.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			conexao.close();
 		}
 	}
 }

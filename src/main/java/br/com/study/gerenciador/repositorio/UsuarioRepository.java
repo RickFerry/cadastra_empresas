@@ -16,7 +16,7 @@ public class UsuarioRepository {
 		this.conn = new ConnectionFactory();
 		try {
 			this.conexao = conn.getConnection();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -36,8 +36,6 @@ public class UsuarioRepository {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			conexao.close();
 		}
 		return usuario;
 	}
