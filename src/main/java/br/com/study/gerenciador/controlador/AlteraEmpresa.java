@@ -1,7 +1,6 @@
 package br.com.study.gerenciador.controlador;
 
-import static br.com.study.gerenciador.repositorio.Banco.bucaPorId;
-
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,11 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.study.gerenciador.contrato.Acao;
 import br.com.study.gerenciador.modelo.Empresa;
+import br.com.study.gerenciador.repositorio.EmpresaRepository;
 
 public class AlteraEmpresa implements Acao {
 
+	private EmpresaRepository empresaRepository;
+
+	public AlteraEmpresa() {
+		empresaRepository = new EmpresaRepository();
+	}
+
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-		Integer id = Integer.valueOf(request.getParameter("id"));
+		long id = Long.parseLong(request.getParameter("id"));
 		String nomeEmpresa = request.getParameter("nome");
 		String data = request.getParameter("data");
 
@@ -27,11 +33,16 @@ public class AlteraEmpresa implements Acao {
 		} catch (ParseException e) {
 			throw new ServletException(e);
 		}
-
-		Empresa empresa = bucaPorId(id);
+		Empresa empresa = new Empresa();
+		empresa.setId(id);
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(date);
 
+		try {
+			empresaRepository.atualizaEmpresa(empresa);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return "redirect:entrada?acao=ListaEmpresas";
 	}
 }

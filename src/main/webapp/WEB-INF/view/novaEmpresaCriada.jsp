@@ -8,7 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-	<body>
+	<body>formAlteraEmpresa
+		<a href="/gerenciador/entrada?acao=ListaEmpresas">Listar Empresas</a> - 
+		<a href="/gerenciador/entrada?acao=NovaEmpresaForm">Adicionar Empresa</a> - 
 		<c:import url="fragmento-logout.jsp"/>
 		<c:if test="${ not empty nomeEmpresa }">
 			Empresa ${ nomeEmpresa } cadastrada com sucesso!

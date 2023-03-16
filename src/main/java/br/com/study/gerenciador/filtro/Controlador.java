@@ -29,7 +29,7 @@ public class Controlador extends HttpFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		String destino = null;
 		String acao = request.getParameter("acao");
-		String nomeQualificado = "br.com.study.gerenciador.controller." + acao;
+		String nomeQualificado = "br.com.study.gerenciador.controlador." + acao;
 
 		try {
 			Class<?> classe = Class.forName(nomeQualificado);

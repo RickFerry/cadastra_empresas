@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Empresa {
 
-	private Integer id;
+	private Long id;
 	private String nome;
-	private Date dataAbertura = new Date();
+	private Date dataAbertura;
 }
